@@ -256,6 +256,40 @@ Cloudflare Pages 对「找不到的路径」有一个默认行为：如果站点
 
 **结论：放全部 6 个版本、12 个文件完全没问题。**
 
+### 7.1.1 和计数器 Worker 会不会抢额度？
+
+**不会。** 官方文档原文：
+
+> On both free and paid plans, requests to static assets are **free and unlimited**.
+> A request is considered static when it does not invoke Functions.
+
+翻译成实际影响：
+
+| | 计数器 Worker（times.sfw.us.ci） | 本站（纯静态） |
+|---|---|---|
+| 请求计数 | 10 万/天 | **不计量，无限** |
+| 占谁的额度 | Workers 自己的 | 谁的都不占 |
+| 带宽 | — | 无限 |
+
+**只有 Pages Functions 才共享 Workers 那 10 万/天**，而本站没有 `functions/` 目录，
+所有请求都是直接返回文件，所以**一个请求都不计**。
+
+真正共享的只有这些（都和访问量无关）：
+
+| 资源 | 免费额度 | 现状 |
+|---|---|---|
+| Workers 脚本数 | 100 个/账号 | 2 个 |
+| Pages 项目数 | 100 个/账号 | 1 个 |
+| Pages 构建次数 | **500 次/月**（账号内共享） | 每次 push 用 1 次 |
+| D1 存储 | 5 GB | 只有计数器在用 |
+
+⚠️ **以后如果给本站也加统计功能**，那部分 D1 写入会和计数器**共用** 10 万行/天。
+现在没有，不用管。
+
+⚠️ 构建的小技巧：本站 78 MB，每次构建都要重传全部文件。
+如果某次提交**不需要重新部署**（比如只改 README），在 commit 信息里写
+`[CF-Pages-Skip]`，Cloudflare 会跳过这次构建，省一次额度。
+
 真正会先撞上的不是 Pages，而是 **GitHub 仓库**（见 7.2）和**单文件 25 MiB**。
 
 ⚠️ **25 MiB 是硬限制**，单个文件超了部署直接失败（不是整个站失败，是那个文件传不上去）。
