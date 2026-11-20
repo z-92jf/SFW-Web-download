@@ -1,0 +1,126 @@
+{
+	"updated": "2026-11-20",
+	"site": "https://sfw.us.ci",
+	"versions": [
+		{
+			"version": "1.1.3",
+			"date": "2026-11-16",
+			"stage": "正式版",
+			"note": "修复若干问题，增加时间工具和 Base64 工具等新功能",
+			"files": [
+				{
+					"label": "安装版",
+					"file": "Setup.SERVICES.FOR.Windows.1.1.3.exe",
+					"size": "6.07 MB",
+					"md5": "1e2fb65a0c95c4ab11d3779b5b03407f"
+				},
+				{
+					"label": "免安装包",
+					"file": "SERVICES.FOR.Windows.1.1.3.zip",
+					"size": "6.60 MB",
+					"md5": "d532455414a789b43c3c698fc468c41a"
+				}
+			]
+		},
+		{
+			"version": "1.1.2",
+			"date": "2026-11-06",
+			"stage": "正式版",
+			"note": "密码加密、账户管理三项、自动检查更新、主题设置",
+			"files": [
+				{
+					"label": "安装版",
+					"file": "Setup.SERVICES.FOR.Windows.1.1.2.exe",
+					"size": "5.35 MB",
+					"md5": "9878b2042ab44913edc362e2f830e05e"
+				},
+				{
+					"label": "免安装包",
+					"file": "1.1.2.zip",
+					"size": "5.81 MB",
+					"md5": "266259a8af92eb73a98e19670c5fc0ea"
+				}
+			]
+		},
+		{
+			"version": "1.1.1",
+			"date": "2026-10-03",
+			"stage": "正式版",
+			"note": "稳定性与可用性修复",
+			"files": [
+				{
+					"label": "安装版",
+					"file": "Setup-SERVICES-FOR-Windows-V1.1.1.exe",
+					"size": "5.67 MB",
+					"md5": "eebc31e981bf0193258edfcfab3c0e92"
+				},
+				{
+					"label": "免安装包",
+					"file": "1.1.1.zip",
+					"size": "7.31 MB",
+					"md5": "dba514a452cef1d1527442a52b9c2618"
+				}
+			]
+		},
+		{
+			"version": "1.1.0",
+			"date": "2026-06-20",
+			"stage": "正式版",
+			"note": "免回车操作、密码输入加密、新增账号管理",
+			"files": [
+				{
+					"label": "安装版",
+					"file": "Setup.SERVICES.FOR.Windows.V1.1.0-Win64.exe",
+					"size": "7.44 MB",
+					"md5": "fa3cedfb59cfb5aef44755df2233783b"
+				},
+				{
+					"label": "免安装包",
+					"file": "1.1.0-Win64.zip",
+					"size": "8.74 MB",
+					"md5": "27e93ab873f086b275107079096072b5"
+				}
+			]
+		},
+		{
+			"version": "1.0.1",
+			"date": "2026-05-14",
+			"stage": "测试版",
+			"note": "账户操作体验更新、新增访客登录",
+			"files": [
+				{
+					"label": "安装版",
+					"file": "Setup.SERVICES.FOR.Windows.V1.0.1.Beta.exe",
+					"size": "5.71 MB",
+					"md5": "406b659a1f9979d2209f65d303778897"
+				},
+				{
+					"label": "免安装包",
+					"file": "1.0.1.Beta.zip",
+					"size": "6.71 MB",
+					"md5": "20c4d4c427f0f4926cabca445cfc529a"
+				}
+			]
+		},
+		{
+			"version": "1.0.0",
+			"date": "2026-04-18",
+			"stage": "预发布",
+			"note": "首个公开版本",
+			"files": [
+				{
+					"label": "安装版",
+					"file": "Setup.SERVICES.FOR.Windows.V1.0.0.exe",
+					"size": "5.47 MB",
+					"md5": "77036c8df1bb613fd1dbb3fb0ebec659"
+				},
+				{
+					"label": "免安装包",
+					"file": "v1.0.0.zip",
+					"size": "7.16 MB",
+					"md5": "281d6d79db63a42bedc63446b393eed9"
+				}
+			]
+		}
+	]
+}
