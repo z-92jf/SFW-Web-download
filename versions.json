@@ -1,6 +1,44 @@
 {
-	"updated": "2026-11-20",
+	"updated": "2026-11-22",
 	"site": "https://sfw.us.ci",
+	"dependencies": [
+		{
+			"os": "Windows 7 SP1",
+			"note": "需要 64 位系统。先装必装的那个，装不上再试可选的，装完重启。",
+			"files": [
+				{
+					"label": "Universal C Runtime（KB2999226）",
+					"file": "Windows6.1-KB2999226-x64.msu",
+					"size": "0.99 MB",
+					"md5": "ad7f5c851f6387e424ab206effb21354",
+					"required": true,
+					"desc": "解决提示缺少 api-ms-win-crt-*.dll 的问题。"
+				},
+				{
+					"label": "Windows 7 更新（KB2533552）",
+					"file": "Windows6.1-KB2533552-x64.msu",
+					"size": "9.23 MB",
+					"md5": "5e36c18d1b78f2003146dcd9528f8885",
+					"required": false,
+					"desc": "上面那个装不上时再装这个，然后重新试一次。"
+				}
+			]
+		},
+		{
+			"os": "Windows 8.1",
+			"note": "需要 64 位系统。装完重启。",
+			"files": [
+				{
+					"label": "Universal C Runtime（KB2999226）",
+					"file": "Windows8.1-KB2999226-x64.msu",
+					"size": "0.96 MB",
+					"md5": "d0728878f9c6799046b43aeece4f3aca",
+					"required": true,
+					"desc": "解决提示缺少 api-ms-win-crt-*.dll 的问题。"
+				}
+			]
+		}
+	],
 	"versions": [
 		{
 			"version": "1.1.3",

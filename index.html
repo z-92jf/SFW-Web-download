@@ -119,6 +119,43 @@
 		user-select:all;
 	}
 
+	/* ---------- 系统依赖补丁 ---------- */
+	.deps{margin:44px 0 0}
+	.deps h2{margin:0 0 4px;font-size:1.15rem}
+	.deps .note{margin:0 0 18px;font-size:0.88rem;color:var(--muted)}
+	.deps .note code{
+		padding:1px 5px;border-radius:4px;background:var(--brand-soft);
+		font-family:ui-monospace,Consolas,monospace;font-size:0.82em;
+	}
+	.dep-group{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--card)}
+	.dep-group + .dep-group{margin-top:14px}
+	.dep-group-head{
+		display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+		padding:11px 16px;background:var(--brand-soft);
+	}
+	.dep-os{font-weight:600;font-size:0.92rem}
+	.dep-hint{font-size:0.78rem;color:var(--muted)}
+	.dep-list{margin:0;padding:0;list-style:none}
+	.dep-item{
+		display:flex;align-items:center;justify-content:space-between;
+		gap:16px;padding:13px 16px;
+	}
+	.dep-item + .dep-item{border-top:1px solid var(--border)}
+	.dep-main{display:flex;flex-direction:column;gap:3px;min-width:0}
+	.dep-top{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+	.dep-label{font-size:0.9rem;font-weight:500}
+	.dep-tag{font-size:0.7rem;padding:1px 7px;border-radius:999px;font-weight:500;line-height:1.7}
+	.dep-tag.req{background:var(--brand);color:#fff}
+	.dep-tag.opt{border:1px solid var(--border);color:var(--faint)}
+	.dep-desc{font-size:0.82rem;line-height:1.55;color:var(--muted)}
+	.dep-md5{font-size:0.75rem;color:var(--faint);margin-top:2px}
+	.dep-md5 code{
+		font-family:ui-monospace,Consolas,monospace;font-size:0.74rem;
+		padding:1px 5px;border-radius:4px;background:var(--brand-soft);
+		color:var(--muted);word-break:break-all;user-select:all;
+	}
+	.dep-item .btn{flex-shrink:0;padding:8px 15px;font-size:0.86rem}
+
 	/* ---------- 提示与页脚 ---------- */
 	.tip{
 		margin:32px 0 0;padding:14px 18px;
@@ -147,6 +184,9 @@
 		/* .md5line 用的是 flex-basis:100%（横向占满），
 		   在 column 容器里 basis 变成「高度」，必须重置回 auto */
 		.md5line{flex-basis:auto;width:100%}
+		/* 依赖项：文件名比版本号长，窄屏把按钮挪到文字下面 */
+		.dep-item{flex-direction:column;align-items:stretch;gap:10px}
+		.dep-item .btn{width:100%;justify-content:center}
 	}
 </style>
 </head>
@@ -165,6 +205,65 @@
 	<div id="app">
 		<p class="note">正在读取版本列表…</p>
 	</div>
+
+	<section class="deps">
+		<h2>Windows 7 / 8 依赖补丁</h2>
+		<p class="note">
+			只有系统提示缺少 <code>api-ms-win-crt-*.dll</code> 时才需要装。
+			按系统选一组，装完重启电脑。
+		</p>
+
+		<div class="dep-group">
+			<div class="dep-group-head">
+				<span class="dep-os">Windows 7 SP1</span>
+				<span class="dep-hint">64 位 · 先装必装的，装不上再试可选的</span>
+			</div>
+			<ul class="dep-list">
+				<li class="dep-item">
+					<div class="dep-main">
+						<div class="dep-top">
+							<span class="dep-label">Universal C Runtime（KB2999226）</span>
+							<span class="dep-tag req">必装</span>
+						</div>
+						<span class="dep-desc">解决提示缺少 api-ms-win-crt-*.dll 的问题。</span>
+						<span class="dep-md5">MD5 <code>ad7f5c851f6387e424ab206effb21354</code></span>
+					</div>
+					<a class="btn" href="Windows6.1-KB2999226-x64.msu">下载<span class="sz">0.99 MB</span></a>
+				</li>
+				<li class="dep-item">
+					<div class="dep-main">
+						<div class="dep-top">
+							<span class="dep-label">Windows 7 更新（KB2533552）</span>
+							<span class="dep-tag opt">可选</span>
+						</div>
+						<span class="dep-desc">上面那个装不上时再装这个，然后重新试一次。</span>
+						<span class="dep-md5">MD5 <code>5e36c18d1b78f2003146dcd9528f8885</code></span>
+					</div>
+					<a class="btn alt" href="Windows6.1-KB2533552-x64.msu">下载<span class="sz">9.23 MB</span></a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="dep-group">
+			<div class="dep-group-head">
+				<span class="dep-os">Windows 8.1</span>
+				<span class="dep-hint">64 位 · 装完重启</span>
+			</div>
+			<ul class="dep-list">
+				<li class="dep-item">
+					<div class="dep-main">
+						<div class="dep-top">
+							<span class="dep-label">Universal C Runtime（KB2999226）</span>
+							<span class="dep-tag req">必装</span>
+						</div>
+						<span class="dep-desc">解决提示缺少 api-ms-win-crt-*.dll 的问题。</span>
+						<span class="dep-md5">MD5 <code>d0728878f9c6799046b43aeece4f3aca</code></span>
+					</div>
+					<a class="btn" href="Windows8.1-KB2999226-x64.msu">下载<span class="sz">0.96 MB</span></a>
+				</li>
+			</ul>
+		</div>
+	</section>
 
 	<p class="tip">
 		<strong>提示</strong>：安装版是可执行安装程序，按向导完成安装；免安装包是压缩包，解压后直接运行。

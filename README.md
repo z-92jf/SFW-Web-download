@@ -43,11 +43,24 @@ SFW-Web-download/
 ├── Setup.SERVICES.FOR.Windows.1.1.2.exe          │
 ├── 1.1.2.zip                                     │
 ├── Setup.SERVICES.FOR.Windows.1.1.3.exe          │
-└── SERVICES.FOR.Windows.1.1.3.zip                ┘
+├── SERVICES.FOR.Windows.1.1.3.zip                ┘
+│
+├── Windows6.1-KB2999226-x64.msu      ┐  Windows 7 / 8.1 的依赖补丁
+├── Windows6.1-KB2533552-x64.msu      │  3 个文件，共 11 MB
+└── Windows8.1-KB2999226-x64.msu      ┘
 ```
 
-> 安装包已经全部放进来了。如果你以后重新 clone 仓库，这些文件会一起下来（78 MB）。
+> 安装包已经全部放进来了。如果你以后重新 clone 仓库，这些文件会一起下来（约 90 MB）。
 > **文件名一个字都不能改** —— `versions.json` 里写的就是它们，改名即 404。
+
+> 三个 `.msu` 是 Windows 7 / 8.1 的 Universal C Runtime 补丁。Win10 及以上系统自带这个运行库，
+> 不需要装；Win7 SP1 / 8.1 缺了会报「计算机中丢失 api-ms-win-crt-runtime-l1-1-0.dll」。
+>
+> ⚠ 换补丁文件时 **三处要一起改**：`versions.json` 的 `dependencies` 段、`index.html` 里的下载区和 MD5、
+> 官网 `src/data/site.ts` 的 `runtimeDeps`。任一处漏改，用户下载到的就是旧文件或对不上号的 MD5。
+>
+> ⚠ Cloudflare Pages 单文件上限 25 MiB。Windows 8.1 的 **KB2919355 有 724 MB，放不进来**，
+> 所以 8.1 用的是 KB2999226（约 1 MB），不是那个更新汇总包。
 
 ---
 
